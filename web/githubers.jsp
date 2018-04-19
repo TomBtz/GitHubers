@@ -9,7 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
     <body>
-        <h1> Githubers</h1>
+        <h1> Githubers - Potter'World</h1>
         <div class="container">
             <div class="row">
                 <c:forEach items="${githubers}" var="githuber">
