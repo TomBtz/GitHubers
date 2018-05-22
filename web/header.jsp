@@ -27,6 +27,9 @@
                     <a class="nav-link" href="githubers">Githubers<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
+                    <a class="nav-link" href="track">Track<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="https://www.reddit.com/r/CatGifs/">Urgence crise incoming ${name}<span class="sr-only">(current)</span></a>
                 </li>
             </ul>

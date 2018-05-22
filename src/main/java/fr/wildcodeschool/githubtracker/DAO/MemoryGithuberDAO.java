@@ -1,32 +1,33 @@
 package fr.wildcodeschool.githubtracker.DAO;
 
 import fr.wildcodeschool.githubtracker.model.Githuber;
-
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Default;
 import java.util.*;
 
-@ApplicationScoped
-public class MemoryGithuberDAO implements GithuberDAO {
+@Dependent
+@Default
+@InMemory
+public class MemoryGithuberDAO extends GithubUtils implements GithuberDAO {
 
-    private HashMap<String, Githuber> mapGithubers;
+    private Map<String, Githuber> allSavedGithubers = new HashMap<>();
 
+    @Override
+    public void saveGithuber(Githuber githuber) {
+        allSavedGithubers.put(githuber.getLogin(), githuber);
+    }
+
+    @Override
     public List<Githuber> getGithubers() {
-        return null;
-
-    }
-
-    public void saveGithuber(Githuber githuber){
-
-    }
-
-    public Githuber parseGithuber(String login) {
-        return null;
+        List<Githuber> allGithubers = new ArrayList<>();
+        for (Map.Entry<String, Githuber> entry : allSavedGithubers.entrySet()){
+            allGithubers.add(entry.getValue());
+        }
+        return allGithubers;
     }
 
     @PostConstruct
-    private void jenesaispas() {
-
-    }
+    private void tryWithHpChars() {}
 
 }

@@ -13,18 +13,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "GithubersServlet", urlPatterns = {"/githubers", "/header"})
+@WebServlet(name = "GithubersServlet", urlPatterns = {"/githubers"})
 public class GithubersServlet extends HttpServlet {
 
-    private @Inject GithubersService githubersService;
+        @Inject GithubersService githubersService;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        request.setAttribute("githubers", githubersService.getGithuber("Harry"));
-        request.getRequestDispatcher("githubers.jsp").forward(request, response);
-    }
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            String login = request.getParameter("login");
+            if (login != null) {
+                try {
+                    githubersService.track(login);
+                }catch(NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+            request.setAttribute("githubers", githubersService.getAllGithubers());
+            getServletContext().getRequestDispatcher("/githubers.jsp" ).forward( request, response );
+        }
 }
+

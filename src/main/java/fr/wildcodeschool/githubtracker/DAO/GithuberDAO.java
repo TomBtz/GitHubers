@@ -1,7 +1,6 @@
 package fr.wildcodeschool.githubtracker.DAO;
-import fr.wildcodeschool.githubtracker.model.Githuber;
 
-import javax.enterprise.context.Dependent;
+import fr.wildcodeschool.githubtracker.model.Githuber;
 import java.util.List;
 
 public interface GithuberDAO {

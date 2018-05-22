@@ -23,6 +23,7 @@
                             </ul>
                         <div class="col-xs-1"></div>
                 </c:forEach>
+
             </div>
         </div>
     </body>
